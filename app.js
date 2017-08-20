@@ -10,11 +10,12 @@ var argv = yargs.argv;
 
 var command = argv._[0];
 console.log('Command : ', command);
-console.log('Process : ', process.argv);
+// console.log('Process : ', process.argv);
 console.log('yargs : ', argv);
 
 if (command === 'add')	{
 	console.log('Adding new note');
+	// node app.js add --title=secret --body="some body here"
 	notes.addNote(argv.title, argv.body);
 } else if (command === 'list')	{
 	console.log('Listing all notes');
