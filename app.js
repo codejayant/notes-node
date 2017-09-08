@@ -16,16 +16,30 @@ console.log('yargs : ', argv);
 if (command === 'add')	{
 	console.log('Adding new note');
 	// node app.js add --title=secret --body="some body here"
-	notes.addNote(argv.title, argv.body);
+	var note = notes.addNote(argv.title, argv.body);
+	if (note) {
+		console.log('Note created');
+		notes.logNote(note);
+	} else {
+		console.log('note not created');
+	}
 } else if (command === 'list')	{
 	console.log('Listing all notes');
 	notes.getAll();
 } else if (command === 'read')	{
 	console.log('Read all notes');
-	notes.readNote(argv.title);
+	var note = notes.readNote(argv.title);
+	if (note)	{
+		console.log('Note found');
+		notes.logNote(note);
+	} else {
+		console.log('Note not found');
+	}
 } else if (command === 'remove') {
 	console.log('Remove a note');
-	notes.removeNote(argv.title);
+	var isNoteRemoved = notes.removeNote(argv.title);
+	var message = isNoteRemoved ? 'Note was removed' : 'Note not found';
+	console.log(message);
 } else {
 	console.log('command not found');
 }
