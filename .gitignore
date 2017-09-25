@@ -1,5 +1,5 @@
 node_modules/
 package-lock.json
-#notes-data.json
+notes-data.json
 
 .idea/
